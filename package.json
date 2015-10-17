@@ -46,9 +46,17 @@
   },
   "devDependencies": {
     "babel": "^5.8.23",
+    "babel-core": "^5.8.25",
     "babel-loader": "^5.3.2",
+    "karma": "^0.13.11",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-tap": "^1.0.3",
+    "karma-webpack": "^1.7.0",
+    "phantomjs": "^1.9.18",
+    "phantomjs-polyfill": "0.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "tape": "^4.2.1",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
   },
@@ -57,7 +65,7 @@
     "react-dom": "0.14.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "karma start --single-run",
     "lint": "eslint .",
     "compile": "babel src --out-dir lib",
     "prepublish": "npm run compile",

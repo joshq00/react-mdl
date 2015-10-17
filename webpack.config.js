@@ -27,5 +27,8 @@ module.exports = {
         loaders: [
             { test: /\.js$/, loader: 'babel-loader' }
         ]
+    },
+    node: {
+        fs: 'empty'
     }
 };

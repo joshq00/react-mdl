@@ -24,6 +24,9 @@ class Textfield extends React.Component {
             PropTypes.number
         ])
     }
+    static defaultProps = {
+        label: ''
+    };
 
     componentDidUpdate(prevProps) {
         if(
