@@ -4,11 +4,8 @@ import mdlUpgrade from './utils/mdlUpgrade';
 
 class Radio extends React.Component {
     static propTypes = {
-        checked: PropTypes.bool,
         className: PropTypes.string,
-        disabled: PropTypes.bool,
         name: PropTypes.string,
-        onChange: PropTypes.func,
         ripple: PropTypes.bool,
         value: PropTypes.oneOfType([
             PropTypes.string,
@@ -20,12 +17,8 @@ class Radio extends React.Component {
         ripple: true
     }
 
-    _handleChange = (event) => {
-        this.props.onChange(event.target.value);
-    }
-
     render() {
-        var { checked, className, disabled, name, ripple, value } = this.props;
+        var { className, name, ripple, value, ...inputProps } = this.props;
         var inputId = 'radio-' + name.replace(/\s+/g, '') + '-' + value.replace(/\s+/g, '');
 
         var classes = classNames('mdl-radio mdl-js-radio', {
@@ -40,9 +33,7 @@ class Radio extends React.Component {
                     className="mdl-radio__button"
                     name={name}
                     value={value}
-                    checked={checked}
-                    disabled={disabled}
-                    onChange={this._handleChange}
+                    {...inputProps}
                 />
                 <span className="mdl-radio__label">{this.props.children}</span>
             </label>

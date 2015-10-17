@@ -4,11 +4,8 @@ import mdlUpgrade from './utils/mdlUpgrade';
 
 class Switch extends React.Component {
     static propTypes = {
-        checked: PropTypes.bool,
         className: PropTypes.string,
-        disabled: PropTypes.bool,
         id: PropTypes.string.isRequired,
-        onChange: PropTypes.func.isRequired,
         ripple: PropTypes.bool
     }
 
@@ -16,12 +13,8 @@ class Switch extends React.Component {
         ripple: true
     }
 
-    _handleChange = (event) => {
-        this.props.onChange(event.target.checked);
-    }
-
     render() {
-        var { checked, className, disabled, id, ripple } = this.props;
+        var { className, id, ripple } = this.props;
         var inputId = 'switch-' + id;
 
         var classes = classNames('mdl-switch mdl-js-switch', {
@@ -34,9 +27,6 @@ class Switch extends React.Component {
                     type="checkbox"
                     id={inputId}
                     className="mdl-switch__input"
-                    checked={checked}
-                    disabled={disabled}
-                    onChange={this._handleChange}
                 />
                 <span className="mdl-switch__label">{this.props.children}</span>
             </label>

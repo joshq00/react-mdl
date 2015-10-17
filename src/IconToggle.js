@@ -7,10 +7,8 @@ class IconToggle extends React.Component {
     static propTypes = {
         checked: PropTypes.bool,
         className: PropTypes.string,
-        disabled: PropTypes.bool,
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        onChange: PropTypes.func.isRequired,
         ripple: PropTypes.bool
     }
 
@@ -18,12 +16,8 @@ class IconToggle extends React.Component {
         ripple: true
     }
 
-    _handleChange = (event) => {
-        this.props.onChange(event.target.checked);
-    }
-
     render() {
-        var { className, checked, disabled, id, name, ripple, ...otherProps } = this.props;
+        var { checked, className, id, name, ripple, ...inputProps } = this.props;
         var inputId = 'icon-toggle-' + id;
 
         var classes = classNames('mdl-icon-toggle mdl-js-icon-toggle', {
@@ -36,9 +30,8 @@ class IconToggle extends React.Component {
                     type="checkbox"
                     id={inputId}
                     className="mdl-icon-toggle__input"
-                    checked={checked}
-                    disabled={disabled}
-                    onChange={this._handleChange}
+                    value={checked}
+                    {...inputProps}
                 />
                 <Icon className="mdl-icon-toggle__label" name={name} />
             </label>
