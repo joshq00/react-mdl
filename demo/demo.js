@@ -14,6 +14,7 @@ import Toggles from './sections/Toggles';
 import Tables from './sections/Tables';
 import Textfields from './sections/Textfields';
 import Tooltips from './sections/Tooltips';
+import ComponentList from './ComponentList';
 
 const App = ( props ) => (
     <Layout fixedHeader fixedDrawer>
@@ -47,6 +48,8 @@ const App = ( props ) => (
             <Tables id="tables" />
             <Textfields id="textfields" />
             <Tooltips id="tooltips" />
+
+            <ComponentList />
         </Content>
     </Layout>
 );
