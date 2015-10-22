@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang='en'>
+    <head></head>
+<body>
+
+<main></main>
+<div id='output'></div>
+<div id='err' style="font-family: monospace; white-space: pre; overflow: auto"></div>
+
+<script src="https://fb.me/react-0.14.0.js"></script>
+<script src="https://fb.me/react-dom-0.14.0.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser-polyfill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.js"></script>
+
+<script type="text/babel">
+let sample = 
+`class App extends React.Component {
+    render () {
+        return (
+            <div>hi</div>
+        );
+    }
+}
+ReactDOM.render(
+    <App />,
+    document.querySelector( '#output' )
+);`
+let el = document.getElementById( 'output' );
+let err = document.getElementById( 'err' );
+
+let timeout = null;
+let render = ( jsx ) => {
+    clearTimeout( timeout );
+    timeout = setTimeout( () => {
+        try {
+            let code = babel.transform( jsx, {
+                stage: 0,
+            } ).code;
+            let component = eval( code );
+            // ReactDOM.render( component, el );
+            err.innerText = '';
+        } catch ( e ) {
+            err.innerText = `${ e }`;
+        }
+    }, 250 );
+};
+
+class Editor extends React.Component {
+    componentWillMount () {
+        render( this.props.sample );
+    }
+    render () {
+        return (
+            <textarea
+                style={{ width: '100%' }}
+                rows={ 25 }
+                onChange={ e => render( e.target.value ) }
+                defaultValue={ this.props.sample } />
+        );
+    }
+}
+
+Editor.defaultProps = {
+    sample,
+};
+ReactDOM.render( <Editor />, document.querySelector( 'main' ) );
+</script>
+
+</body>
+</html>
