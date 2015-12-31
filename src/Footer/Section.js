@@ -12,14 +12,14 @@ const Section = (props) => {
     return (
         <div className={classes} {...otherProps}>
             {logo ? <div className="mdl-logo">{logo}</div> : null}
-            {cloneChildren(children, { size: size })}
+            {cloneChildren(children, { size })}
         </div>
     );
 };
 
 Section.propTypes = {
     className: PropTypes.string,
-    logo: PropTypes.string,
+    logo: PropTypes.node,
     size: PropTypes.oneOf(['mini', 'mega']),
     type: PropTypes.oneOf(['top', 'middle', 'bottom', 'left', 'right'])
 };

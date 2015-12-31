@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
-export default function(displayName, defaultClassName, element = 'div') {
+export default (displayName, defaultClassName, element = 'div') => {
     const fn = (props) => {
         const { className, children, ...otherProps } = props;
 
@@ -12,6 +12,9 @@ export default function(displayName, defaultClassName, element = 'div') {
     };
 
     fn.displayName = displayName;
+    fn.propTypes = {
+        className: PropTypes.string
+    };
 
     return fn;
-}
+};

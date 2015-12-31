@@ -1,4 +1,4 @@
-# React-MDL [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+# [React-MDL][react-mdl-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 React-MDL is a set of React components build on top of [Material Design Lite][google-mdl-url]. It's based on their version 1.0.6.
 
@@ -33,18 +33,11 @@ import Button from 'react-mdl/lib/Button';
 import { Card, CardText, CardActions } from 'react-mdl/lib/Card';
 ```
 
-## How to run the demos
-Clone the repository, install the dependencies and run the demo server, then hit `http://localhost:8080/demo/` with your favourite browser.
-```
-npm install
-npm run demo
-// go to http://localhost:8080/demo/
-```
-
 ## License
 
 MIT, see [LICENSE.md](/LICENSE.md) for details.
 
+[react-mdl-url]: http://tleunen.github.io/react-mdl/
 [travis-image]: https://travis-ci.org/tleunen/react-mdl.svg?branch=master
 [travis-url]: https://travis-ci.org/tleunen/react-mdl
 [coveralls-image]: https://coveralls.io/repos/tleunen/react-mdl/badge.svg?branch=master&service=github

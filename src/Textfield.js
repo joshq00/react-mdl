@@ -28,7 +28,8 @@ class Textfield extends React.Component {
     componentDidUpdate(prevProps) {
         if(
             this.props.required !== prevProps.required ||
-            this.props.pattern !== prevProps.pattern
+            this.props.pattern !== prevProps.pattern ||
+            this.props.error !== prevProps.error
         ) {
             findDOMNode(this).MaterialTextfield.checkValidity();
         }
@@ -53,14 +54,14 @@ class Textfield extends React.Component {
               rows, style, ...otherProps } = this.props;
 
         const hasRows = !!rows;
-        const inputId = 'textfield-' + label.replace(/[^a-z0-9]/gi, '');
+        const id = 'textfield-' + label.replace(/[^a-z0-9]/gi, '');
         const inputTag = hasRows || maxRows > 1 ? 'textarea' : 'input';
 
         const inputProps = {
             className: classNames('mdl-textfield__input', inputClassName),
-            id: inputId,
-            key: inputId,
-            rows: rows,
+            id,
+            key: id,
+            rows,
             ref: 'input',
             ...otherProps
         };
@@ -69,7 +70,7 @@ class Textfield extends React.Component {
 
         const inputAndLabelError = [
             input,
-            <label key="label" className="mdl-textfield__label" htmlFor={inputId}>{label}</label>,
+            <label key="label" className="mdl-textfield__label" htmlFor={id}>{label}</label>,
             error ? (
                 <span key="error" className="mdl-textfield__error">{error}</span>
             ) : null
@@ -81,13 +82,13 @@ class Textfield extends React.Component {
         }, className);
 
         const field = expandable
-            ? React.createElement('div', {className: 'mdl-textfield__expandable-holder'}, inputAndLabelError)
+            ? React.createElement('div', { className: 'mdl-textfield__expandable-holder' }, inputAndLabelError)
             : inputAndLabelError;
 
         return (
             <div className={containerClasses} style={style}>
                 {expandable ? (
-                    <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor={inputId}>
+                    <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor={id}>
                         <i className="material-icons">{expandableIcon}</i>
                     </label>
                 ) : null}
